@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A259F95525B9E1D100929403 /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A259F95325B9E1D100929403 /* ReviewCollectionViewCell.swift */; };
 		A29AEFEA25B8FCA5008F5D85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29AEFE925B8FCA5008F5D85 /* AppDelegate.swift */; };
 		A29AEFEC25B8FCA5008F5D85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29AEFEB25B8FCA5008F5D85 /* SceneDelegate.swift */; };
 		A29AEFEE25B8FCA5008F5D85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29AEFED25B8FCA5008F5D85 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A259F95325B9E1D100929403 /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		A29AEFE625B8FCA5008F5D85 /* ScanAReview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScanAReview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A29AEFE925B8FCA5008F5D85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A29AEFEB25B8FCA5008F5D85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				A29AEFE925B8FCA5008F5D85 /* AppDelegate.swift */,
 				A29AEFEB25B8FCA5008F5D85 /* SceneDelegate.swift */,
 				A29AEFED25B8FCA5008F5D85 /* ViewController.swift */,
+				A259F95325B9E1D100929403 /* ReviewCollectionViewCell.swift */,
 				A29AEFEF25B8FCA5008F5D85 /* Main.storyboard */,
 				A29AEFF225B8FCA6008F5D85 /* Assets.xcassets */,
 				A29AEFF425B8FCA6008F5D85 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 				A29AEFEE25B8FCA5008F5D85 /* ViewController.swift in Sources */,
 				A29AEFEA25B8FCA5008F5D85 /* AppDelegate.swift in Sources */,
 				A29AEFEC25B8FCA5008F5D85 /* SceneDelegate.swift in Sources */,
+				A259F95525B9E1D100929403 /* ReviewCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
