@@ -42,7 +42,7 @@ class ReviewCollectionViewCell: UICollectionViewCell {
 //    }
     
     func setCellShadow() {
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = UIColor.secondaryLabel.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowOpacity = 0.2
         layer.shadowRadius = 4
@@ -54,8 +54,7 @@ class ReviewCollectionViewCell: UICollectionViewCell {
     func roundCorner() {
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
-        contentView.layer.borderWidth = 2
+        contentView.layer.borderWidth = 1
         contentView.layer.borderColor = cornerColor?.cgColor
-        contentView.backgroundColor = .white
     }
 }
