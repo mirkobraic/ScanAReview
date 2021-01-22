@@ -7,11 +7,16 @@
 
 import UIKit
 import CoreML
+import VisionKit
+import Vision
 
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var dataSource: [ReviewModel] = []
+    
+    
+    private var ocrRequest = VNRecognizeTextRequest(completionHandler: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,8 @@ class ViewController: UIViewController {
 
         let layout = UICollectionViewCompositionalLayout(section: section)
         collectionView.collectionViewLayout = layout
+        
+        configureOCR()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,21 +50,57 @@ class ViewController: UIViewController {
         do {
             let mlModel = try MLReviewModel(configuration: MLModelConfiguration())
             let prediction = try mlModel.prediction(text: text)
+            let model: ReviewModel
             if prediction.label == "Positive" {
-                let cell = ReviewModel(text: text, color: .systemGreen, sentiment: prediction.label)
-                dataSource.append(cell)
-                collectionView.reloadData()
+                model = ReviewModel(text: text, color: .systemGreen, sentiment: prediction.label)
             } else {
-                let cell = ReviewModel(text: text, color: .systemRed, sentiment: prediction.label)
-                dataSource.append(cell)
-                collectionView.reloadData()
+                model = ReviewModel(text: text, color: .systemRed, sentiment: prediction.label)
             }
+            dataSource.append(model)
+            let index = IndexPath(item: dataSource.endIndex - 1, section: 0)
+            collectionView.insertItems(at: [index])
+            collectionView.scrollToItem(at: index, at: .bottom, animated: true)
         } catch {
             print(error)
         }
     }
     
+    private func configureOCR() {
+        ocrRequest = VNRecognizeTextRequest { (request, error) in
+            guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
+            
+            var ocrText = ""
+            for observation in observations {
+                guard let topCandidate = observation.topCandidates(1).first else { return }
+                
+                ocrText += topCandidate.string + "\n"
+            }
+            
+            DispatchQueue.main.async {
+                self.addReview(withText: ocrText)
+            }
+        }
+        
+        ocrRequest.recognitionLevel = .accurate
+        ocrRequest.recognitionLanguages = ["en-US", "en-GB"]
+        ocrRequest.usesLanguageCorrection = true
+    }
+    
+    private func processImage(_ image: UIImage) {
+        guard let cgImage = image.cgImage else { return }
+            
+        let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+        do {
+            try requestHandler.perform([ocrRequest])
+        } catch let error {
+            print(error)
+        }
+    }
+    
     @IBAction func cameraButtonTapped(_ sender: UIBarButtonItem) {
+        let scanVC = VNDocumentCameraViewController()
+        scanVC.delegate = self
+        present(scanVC, animated: true)
     }
 }
 
@@ -79,6 +122,24 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension ViewController: VNDocumentCameraViewControllerDelegate {
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        guard scan.pageCount >= 1 else {
+            controller.dismiss(animated: true)
+            return
+        }
+        for pageIndex in 0 ..< scan.pageCount {
+            processImage(scan.imageOfPage(at: pageIndex))
+        }
+        controller.dismiss(animated: true)
+    }
     
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+        //Handle properly error
+        controller.dismiss(animated: true)
+    }
+    
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        controller.dismiss(animated: true)
+    }
 }
