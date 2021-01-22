@@ -10,6 +10,7 @@
 		A259F95525B9E1D100929403 /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A259F95325B9E1D100929403 /* ReviewCollectionViewCell.swift */; };
 		A259F95B25BA45BF00929403 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A259F95A25BA45BF00929403 /* ReviewModel.swift */; };
 		A259F95F25BA46B100929403 /* ReviewInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A259F95E25BA46B100929403 /* ReviewInputViewController.swift */; };
+		A299C3E925BA563F004864E5 /* MLReviewModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A299C3E825BA563F004864E5 /* MLReviewModel.mlmodel */; };
 		A29AEFEA25B8FCA5008F5D85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29AEFE925B8FCA5008F5D85 /* AppDelegate.swift */; };
 		A29AEFEC25B8FCA5008F5D85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29AEFEB25B8FCA5008F5D85 /* SceneDelegate.swift */; };
 		A29AEFEE25B8FCA5008F5D85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29AEFED25B8FCA5008F5D85 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 		A259F95325B9E1D100929403 /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		A259F95A25BA45BF00929403 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		A259F95E25BA46B100929403 /* ReviewInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewInputViewController.swift; sourceTree = "<group>"; };
+		A299C3E825BA563F004864E5 /* MLReviewModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MLReviewModel.mlmodel; sourceTree = "<group>"; };
 		A29AEFE625B8FCA5008F5D85 /* ScanAReview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScanAReview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A29AEFE925B8FCA5008F5D85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A29AEFEB25B8FCA5008F5D85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +34,7 @@
 		A29AEFF525B8FCA6008F5D85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A29AEFF725B8FCA6008F5D85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2F9529925BA527B002D47CD /* imdb.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = imdb.json; sourceTree = "<group>"; };
+		A2F9529F25BA53B3002D47CD /* ModelTrainingPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ModelTrainingPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,7 @@
 				A2F9529825BA5253002D47CD /* Model Training */,
 				A29AEFE925B8FCA5008F5D85 /* AppDelegate.swift */,
 				A29AEFEB25B8FCA5008F5D85 /* SceneDelegate.swift */,
+				A299C3E825BA563F004864E5 /* MLReviewModel.mlmodel */,
 				A259F95A25BA45BF00929403 /* ReviewModel.swift */,
 				A29AEFED25B8FCA5008F5D85 /* ViewController.swift */,
 				A259F95E25BA46B100929403 /* ReviewInputViewController.swift */,
@@ -83,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				A2F9529925BA527B002D47CD /* imdb.json */,
+				A2F9529F25BA53B3002D47CD /* ModelTrainingPlayground.playground */,
 			);
 			path = "Model Training";
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A259F95B25BA45BF00929403 /* ReviewModel.swift in Sources */,
+				A299C3E925BA563F004864E5 /* MLReviewModel.mlmodel in Sources */,
 				A29AEFEE25B8FCA5008F5D85 /* ViewController.swift in Sources */,
 				A29AEFEA25B8FCA5008F5D85 /* AppDelegate.swift in Sources */,
 				A259F95F25BA46B100929403 /* ReviewInputViewController.swift in Sources */,
