@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreML
 
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -33,10 +34,26 @@ class ViewController: UIViewController {
         if let destination = segue.destination.children.first as? ReviewInputViewController {
             destination.saveReviewCallback = { [weak self] reviewText in
                 guard let self = self else { return }
-                let review = ReviewModel(text: reviewText, color: .label, sentiment: "None")
-                self.dataSource.append(review)
-                self.collectionView.reloadData()
+                self.addReview(withText: reviewText)
             }
+        }
+    }
+    
+    func addReview(withText text: String) {
+        do {
+            let mlModel = try MLReviewModel(configuration: MLModelConfiguration())
+            let prediction = try mlModel.prediction(text: text)
+            if prediction.label == "Positive" {
+                let cell = ReviewModel(text: text, color: .systemGreen, sentiment: prediction.label)
+                dataSource.append(cell)
+                collectionView.reloadData()
+            } else {
+                let cell = ReviewModel(text: text, color: .systemRed, sentiment: prediction.label)
+                dataSource.append(cell)
+                collectionView.reloadData()
+            }
+        } catch {
+            print(error)
         }
     }
     
